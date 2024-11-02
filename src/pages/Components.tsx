@@ -1,4 +1,3 @@
-
 const Components = () => {
 	return (
 		<main className='py-4 px-4 lg:px-8 bg-[#F5F7FB] w-full h-screen'>

@@ -96,7 +96,7 @@ const DevelopmentActivity = () => {
 				</ResponsiveContainer>
 			</div>
 			{/* Commits */}
-			<div className='flex py-3 px-4 md:px-6 text-[60%] md:text-[70%] text-[#b1b3b5] border-b border-[#d5d7de] font-medium'>
+			<div className='flex gap-3 py-3 px-4 md:px-6 text-[60%] md:text-[70%] text-[#b1b3b5] border-b border-[#d5d7de] font-medium'>
 				<p className='flex-1'>USER</p>
 				<p className='flex-1'>COMMIT</p>
 				<p className='flex-1'>DATE</p>
@@ -104,7 +104,7 @@ const DevelopmentActivity = () => {
 			{commits.map((commit, i) => (
 				<div
 					key={i}
-					className='flex items-center py-3 px-4 md:px-6 text-[60%] md:text-[70%] text-[#585F66] border-b border-[#d5d7de] font-medium'>
+					className='flex gap-3 items-center py-3 px-4 md:px-6 text-[60%] md:text-[70%] text-[#585F66] border-b border-[#d5d7de] font-medium'>
 					<div className='flex-1 flex items-center gap-2 md:gap-4'>
 						<img
 							src={commit.avatar}
