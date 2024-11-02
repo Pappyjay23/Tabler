@@ -1,6 +1,6 @@
-import Profile from "../../assets/profile.png";
-import Profile1 from "../../assets/profile2.png";
-import Profile2 from "../../assets/profile3.png";
+import Profile from "../../assets/profile.svg";
+import Profile1 from "../../assets/profile2.svg";
+import Profile2 from "../../assets/profile3.svg";
 import { MdOutlineDeleteOutline } from "react-icons/md";
 import { Area, AreaChart, ResponsiveContainer, Tooltip } from "recharts";
 const DevelopmentActivity = () => {

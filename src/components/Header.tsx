@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { LuBellDot } from "react-icons/lu";
 import Logo from "../assets/logo.svg";
-import Profile from "../assets/profile.png";
+import Profile from "../assets/profile.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { AppContextUse } from "../context/AppContext";
 import { ToastContainer, toast } from "react-toastify";
