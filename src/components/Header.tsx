@@ -3,18 +3,21 @@ import { LuBellDot } from "react-icons/lu";
 import Logo from "../assets/logo.svg";
 import Profile from "../assets/profile.svg";
 import { Link, useNavigate } from "react-router-dom";
-import { AppContextUse } from "../context/AppContext";
 import { ToastContainer, toast } from "react-toastify";
+import { useAppDispatch, useAppSelector } from "../store/store";
+import { logout } from "../features/auth/authSlice";
+import "react-toastify/dist/ReactToastify.css";
 
 const Header = () => {
 	const [showDropdown, setShowDropdown] = useState<boolean>(false);
 	const navigate = useNavigate();
-	const { logout, user } = AppContextUse();
+	const user = useAppSelector((state) => state.auth.user);
+	const dispatch = useAppDispatch();
 	const dropdownRef = useRef<HTMLDivElement>(null);
 
 	const handleLogout = () => {
 		try {
-			logout();
+			dispatch(logout());
 			navigate("/login");
 			toast.success("Logout successful!");
 		} catch {
@@ -65,7 +68,7 @@ const Header = () => {
 							onClick={toggleDropdown}
 							className='flex items-center cursor-pointer space-x-1'>
 							<img
-								src={user?.photoURL ? user?.photoURL : Profile}
+								src={user?.photoURL || Profile}
 								alt='Profile img'
 								className='w-[30px] h-[30px] rounded-full object-cover'
 							/>

@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
-import Logo from "../assets/logo.svg";
-import GoogleLogo from "../assets/google-logo.png";
-import { AppContextUse } from "../context/AppContext";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import GoogleLogo from "../assets/google-logo.png";
+import Logo from "../assets/logo.svg";
+import { login } from "../features/auth/authSlice";
+import { useAppDispatch } from "../store/store";
 
 
 const Login = () => {
@@ -28,12 +30,12 @@ const Login = () => {
 		}
 	}, [currentIndex, message]);
 
-	const { login } = AppContextUse();
 	const navigate = useNavigate();
+	const dispatch = useAppDispatch()
 
 	const handleSignIn = async () => {
 		try {
-			login();
+			await dispatch(login());
 			navigate("/");
 			toast.success("Login successful!");
 		} catch {

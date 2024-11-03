@@ -9,11 +9,29 @@ import Forms from "./pages/Forms";
 import Gallery from "./pages/Gallery";
 import Documentation from "./pages/Documentation";
 import Login from "./pages/Login";
-import { AppContextUse } from "./context/AppContext";
-import "react-toastify/dist/ReactToastify.css";
+import { useEffect } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "./config/firebase";
+import { setUser } from "./features/auth/authSlice";
+import { useAppDispatch, useAppSelector } from "./store/store";
 
 const App = () => {
-	const { isLogged } = AppContextUse();
+	const isLogged = useAppSelector((state) => state.auth.isLogged);
+	const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      if (currentUser) {
+        dispatch(setUser(currentUser));
+        localStorage.setItem('user', JSON.stringify(currentUser));
+      } else {
+        dispatch(setUser(null));
+        localStorage.removeItem('user');
+      }
+    });
+
+    return () => unsubscribe();
+  }, [dispatch]);
 
 	return (
 		<BrowserRouter>
